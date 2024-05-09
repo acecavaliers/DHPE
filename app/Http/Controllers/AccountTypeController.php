@@ -10,7 +10,12 @@ class AccountTypeController extends Controller
 
     public function index()
     {
-        // return view('crud');
+        return view('crud');
+        // return AccountType::all();
+    }
+
+    public function getList(){
+        
         return AccountType::all();
     }
 

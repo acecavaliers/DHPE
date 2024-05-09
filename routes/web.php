@@ -19,5 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('/crud',[AccountTypeController::class,'index']);
+Route::get('/getList',[AccountTypeController::class,'getList']);
 
 Route::post('/addd',[AccountTypeController::class,'store']);
