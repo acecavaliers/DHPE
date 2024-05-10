@@ -18,17 +18,17 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                   <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="/crud">Accounts</a>
-                    <a class="nav-item nav-link" href="/illness">Illness</a>
+                    <a class="nav-item nav-link" href="/crud">Accounts</a>
+                    <a class="nav-item nav-link active" href="/illness">Illness</a>
                     <a class="nav-item nav-link" href="#">DDDDD</a>
                   </div>
                 </div>
               </nav>
         </div>
         <div class="container mt-5">
-            <h1>Accounts</h1>
+            <h1>Illnesses</h1>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                Add New Account
+                Add New Illness
               </button>
 
 
@@ -42,14 +42,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (count($account) > 0)
-                        @foreach ($account as $acct)
+                    @if (count($illness) > 0)
+                        @foreach ($illness as $ill)
                             <tr>
-                                <th>{{ $acct->id }}</th>
-                                <th>{{ $acct->name }}</th>
-                                <th>{{ $acct->created_by }}</th>
-                                <th><a href="/edit/{{ $acct->id }}" class="btn btn-primary">Edit</a>
-                                    <a href="/delete/{{ $acct->id }}" class="btn btn-danger">Delete</a>
+                                <th>{{ $ill->id }}</th>
+                                <th>{{ $ill->name }}</th>
+                                <th>{{ $ill->created_by }}</th>
+                                <th><a href="/edit/{{ $ill->id }}" class="btn btn-primary">Edit</a>
+                                    <a href="/delete/{{ $ill->id }}" class="btn btn-danger">Delete</a>
                                 </th>
                             </tr>
                         @endforeach
@@ -66,13 +66,13 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add Account</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Illness</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="{{url('adddAcct')}}">
+                    <form method="post" action="{{url('addillness')}}">
                         @csrf
                         <div class="form-group mb-2">
                             <label for="exampleInputEmail1">Name</label>
@@ -82,6 +82,13 @@
                             <label for="exampleInputPassword1">Created_by</label>
                             <input type="text" class="form-control" name="created_by" placeholder="created_by">
                         </div>
+                        <div  class="form-group mb-5">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Active</label>
+                            </div>
+                        </div>
+
                         {{-- <div class="form-group mb-2">
                             <label for="exampleInputPassword1">Name</label>
                             <input type="text" class="form-control" name="name" placeholder="Name">

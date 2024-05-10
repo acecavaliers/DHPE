@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountTypeController;
+use App\Http\Controllers\IllnessGroupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,8 @@ Route::get('/', function () {
 Route::get('/crud',[AccountTypeController::class,'index']);
 Route::get('/getList',[AccountTypeController::class,'getList']);
 
-Route::post('/addd',[AccountTypeController::class,'store']);
+Route::post('/adddAcct',[AccountTypeController::class,'store']);
+
+
+Route::get('/illness',[IllnessGroupController::class,'index']);
+Route::post('/addillness',[IllnessGroupController::class,'store']);

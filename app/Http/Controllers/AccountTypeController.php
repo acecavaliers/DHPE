@@ -10,19 +10,20 @@ class AccountTypeController extends Controller
 
     public function index()
     {
-        return view('crud');
+        $account = AccountType::where('is_active', '1')->get();
+        return view('crud')->with("account",$account);
         // return AccountType::all();
     }
 
     public function getList(){
-        
+
         return AccountType::all();
     }
 
 
     public function create()
     {
-        
+
     }
 
 
@@ -33,7 +34,8 @@ class AccountTypeController extends Controller
             'created_by' => 'required',
         ]);
         AccountType::create($validated);
-        return 'TEEEEEST';
+        $account = AccountType::all();
+        return view('crud')->with("account",$account);
     }
 
 
@@ -48,7 +50,7 @@ class AccountTypeController extends Controller
         //
     }
 
- 
+
     public function update(Request $request, AccountType $accountType)
     {
         //
