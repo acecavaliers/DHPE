@@ -37,7 +37,7 @@ class IllnessGroupController extends Controller
             'created_by' => 'required',
         ]);
         IllnessGroup::create($validated);
-        $illness = IllnessGroup::all();
+        $illness = IllnessGroup::where('is_active','1')->get();
         return view('illness')->with("illness",$illness);
     }
 
