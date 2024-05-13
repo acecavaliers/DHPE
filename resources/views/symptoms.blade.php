@@ -11,24 +11,13 @@
     </head>
     <body>
         <div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                  <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="/crud">Accounts</a>
-                    <a class="nav-item nav-link" href="/illness">Illness</a>
-                    <a class="nav-item nav-link active" href="/symptoms">Symptoms</a>
-                  </div>
-                </div>
-              </nav>
+            @include('navbar')
+
         </div>
         <div class="container mt-5">
             <h1>Symptoms</h1>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                Add New Illness
+                Add New Symptoms
               </button>
 
 
@@ -43,15 +32,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (count($symptoms) > 0)
-                        @foreach ($symptoms as $symptom)
+                    @if (count($illnesses) > 0)
+                        @foreach ($illnesses as $illness)
                             <tr>
-                                <th>{{ $symptom->id }}</th>
-                                <th>{{ $symptom->name }}</th>
-                                <th>{{ $symptom->illness_group_id }}</th>
-                                <th>{{ $symptom->created_by }}</th>
-                                <th><a href="/edit/{{ $symptom->id }}" class="btn btn-primary">Edit</a>
-                                    <a href="/delete/{{ $symptom->id }}" class="btn btn-danger">Delete</a>
+                                <th>{{ $illness->id }}</th>
+                                <th>{{ $illness->name }}</th>
+                                <th>{{ $illness->illness_group_id }}</th>
+                                <th>{{ $illness->created_by }}</th>
+                                <th><a href="/edit/{{ $illness->id }}" class="btn btn-primary">Edit</a>
+                                    <a href="/delete/{{ $illness->id }}" class="btn btn-danger">Delete</a>
                                 </th>
                             </tr>
                         @endforeach
@@ -81,12 +70,12 @@
                             <label for="exampleInputEmail1">Illness Group</label>
                             <select class="custom-select" name="illness_group_id">
                                 <option selected disabled>Choose . . .</option>
-                                @if (count($illnesses) > 0)
-                                    @foreach ($illnesses as $illness)
-                                        <option value="{{$illness->id}}">{{$illness->name}}</option>
+                                @if (count($illnessesGroup) > 0)
+                                    @foreach ($illnessesGroup as $illnessGrp)
+                                        <option value="{{$illnessGrp->id}}">{{$illnessGrp->name}}</option>
                                     @endforeach
                                 @else
-                                    <option selected disabled>No illnesses available</option>
+                                    <option selected disabled>No illnessesGroup available</option>
                                 @endif
                               </select>
                         </div>

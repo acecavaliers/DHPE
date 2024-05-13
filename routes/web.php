@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AccountTypeController;
+use App\Http\Controllers\IllnessController;
 use App\Http\Controllers\IllnessGroupController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\SymptomController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +32,8 @@ Route::get('/illness',[IllnessGroupController::class,'index']);
 Route::post('/addillness',[IllnessGroupController::class,'store']);
 
 
-Route::get('/symptoms',[SymptomController::class,'index']);
-Route::post('/addsypmtoms',[SymptomController::class,'store']);
+Route::get('/symptoms',[IllnessController::class,'index']);
+Route::post('/addsypmtoms',[IllnessController::class,'store']);
+
+
+Route::get('/patient',[PatientController::class,'index']);

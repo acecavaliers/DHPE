@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Illness;
 use App\Models\IllnessGroup;
-use App\Models\Symptom;
 use Illuminate\Http\Request;
 
-class SymptomController extends Controller
+class IllnessController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $illnesses = IllnessGroup::where('is_active','1')->get();
-        $symptoms = Symptom::where('is_active','1')->get();
+        $illnessesGroup = IllnessGroup::where('is_active','1')->get();
+        $illnesses = Illness::where('is_active','1')->get();
         return view('symptoms')->with([
-            'symptoms' => $symptoms,
-            'illnesses' => $illnesses
+            'illnesses' => $illnesses,
+            'illnessesGroup' => $illnessesGroup
         ]);
     }
 
@@ -34,26 +34,25 @@ class SymptomController extends Controller
      */
     public function store(Request $request)
     {
-
         $validated = $request->validate([
             'name' => 'required|string',
             'created_by' => 'required',
             'illness_group_id' => 'required|numeric'
         ]);
         $validated['is_active'] = $request->has('is_active') ? 1 : 0;
-        Symptom::create($validated);
-        $illnesses = IllnessGroup::where('is_active','1')->get();
-        $symptoms = Symptom::where('is_active','1')->get();
+        Illness::create($validated);
+        $illnessesGroup = IllnessGroup::where('is_active','1')->get();
+        $illnesses = Illness::where('is_active','1')->get();
         return view('symptoms')->with([
-            'symptoms' => $symptoms,
-            'illnesses' => $illnesses
+            'illnesses' => $illnesses,
+            'illnessesGroup' => $illnessesGroup
         ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Symptom $symptom)
+    public function show(Illness $illness)
     {
         //
     }
@@ -61,7 +60,7 @@ class SymptomController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Symptom $symptom)
+    public function edit(Illness $illness)
     {
         //
     }
@@ -69,7 +68,7 @@ class SymptomController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Symptom $symptom)
+    public function update(Request $request, Illness $illness)
     {
         //
     }
@@ -77,7 +76,7 @@ class SymptomController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Symptom $symptom)
+    public function destroy(Illness $illness)
     {
         //
     }
