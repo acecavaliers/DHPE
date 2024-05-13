@@ -36,6 +36,7 @@ class IllnessGroupController extends Controller
             'name' => 'required|string',
             'created_by' => 'required',
         ]);
+        $validated['is_active'] = $request->has('is_active') ? 1 : 0;
         IllnessGroup::create($validated);
         $illness = IllnessGroup::where('is_active','1')->get();
         return view('illness')->with("illness",$illness);

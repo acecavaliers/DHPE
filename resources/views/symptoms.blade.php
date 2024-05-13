@@ -18,17 +18,17 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                   <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="/crud">Accounts</a>
+                    <a class="nav-item nav-link" href="/crud">Accounts</a>
                     <a class="nav-item nav-link" href="/illness">Illness</a>
-                    <a class="nav-item nav-link" href="/symptoms">Symptoms</a>
+                    <a class="nav-item nav-link active" href="/symptoms">Symptoms</a>
                   </div>
                 </div>
               </nav>
         </div>
         <div class="container mt-5">
-            <h1>Accounts</h1>
+            <h1>Symptoms</h1>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                Add New Account
+                Add New Illness
               </button>
 
 
@@ -37,19 +37,21 @@
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
+                        <th scope="col">illness_group_id</th>
                         <th scope="col">created_by</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if (count($account) > 0)
-                        @foreach ($account as $acct)
+                    @if (count($symptoms) > 0)
+                        @foreach ($symptoms as $symptom)
                             <tr>
-                                <th>{{ $acct->id }}</th>
-                                <th>{{ $acct->name }}</th>
-                                <th>{{ $acct->created_by }}</th>
-                                <th><a href="/edit/{{ $acct->id }}" class="btn btn-primary">Edit</a>
-                                    <a href="/delete/{{ $acct->id }}" class="btn btn-danger">Delete</a>
+                                <th>{{ $symptom->id }}</th>
+                                <th>{{ $symptom->name }}</th>
+                                <th>{{ $symptom->illness_group_id }}</th>
+                                <th>{{ $symptom->created_by }}</th>
+                                <th><a href="/edit/{{ $symptom->id }}" class="btn btn-primary">Edit</a>
+                                    <a href="/delete/{{ $symptom->id }}" class="btn btn-danger">Delete</a>
                                 </th>
                             </tr>
                         @endforeach
@@ -66,14 +68,28 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add Account</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Illness</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="{{url('adddAcct')}}">
+                    <form method="post" action="{{url('addsypmtoms')}}">
                         @csrf
+
+                        <div class="form-group mb-2">
+                            <label for="exampleInputEmail1">Illness Group</label>
+                            <select class="custom-select" name="illness_group_id">
+                                <option selected disabled>Choose . . .</option>
+                                @if (count($illnesses) > 0)
+                                    @foreach ($illnesses as $illness)
+                                        <option value="{{$illness->id}}">{{$illness->name}}</option>
+                                    @endforeach
+                                @else
+                                    <option selected disabled>No illnesses available</option>
+                                @endif
+                              </select>
+                        </div>
                         <div class="form-group mb-2">
                             <label for="exampleInputEmail1">Name</label>
                             <input type="text" class="form-control" name="name" placeholder="Enter name">
@@ -93,6 +109,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
+                {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button> --}}
                 </div>
             </div>
             </div>

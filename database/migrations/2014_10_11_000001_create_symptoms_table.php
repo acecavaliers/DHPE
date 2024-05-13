@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\IllnessGroup;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +14,14 @@ return new class extends Migration
     {
         Schema::create('symptoms', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->tinyInteger('is_active')->default(0);
+            $table->foreignIdFor(IllnessGroup::class)->constrained('illness_groups');
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

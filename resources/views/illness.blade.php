@@ -20,7 +20,7 @@
                   <div class="navbar-nav">
                     <a class="nav-item nav-link" href="/crud">Accounts</a>
                     <a class="nav-item nav-link active" href="/illness">Illness</a>
-                    <a class="nav-item nav-link" href="#">DDDDD</a>
+                    <a class="nav-item nav-link" href="/symptoms">Symptoms</a>
                   </div>
                 </div>
               </nav>
@@ -84,15 +84,10 @@
                         </div>
                         <div  class="form-group mb-5">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="is_active" value="1">
                                 <label class="form-check-label" for="inlineCheckbox1">Active</label>
                             </div>
                         </div>
-
-                        {{-- <div class="form-group mb-2">
-                            <label for="exampleInputPassword1">Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="Name">
-                        </div> --}}
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </form>

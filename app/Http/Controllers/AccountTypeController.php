@@ -33,6 +33,7 @@ class AccountTypeController extends Controller
             'name' => 'required|string',
             'created_by' => 'required',
         ]);
+        $validated['is_active'] = $request->has('is_active') ? 1 : 0;
         AccountType::create($validated);
         $account = AccountType::where('is_active', '1')->get();
         return view('crud')->with("account",$account);

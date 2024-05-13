@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountTypeController;
 use App\Http\Controllers\IllnessGroupController;
+use App\Http\Controllers\SymptomController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,7 @@ Route::post('/adddAcct',[AccountTypeController::class,'store']);
 
 Route::get('/illness',[IllnessGroupController::class,'index']);
 Route::post('/addillness',[IllnessGroupController::class,'store']);
+
+
+Route::get('/symptoms',[SymptomController::class,'index']);
+Route::post('/addsypmtoms',[SymptomController::class,'store']);
