@@ -31,6 +31,10 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         //
+        // foreach ($request->input('diseases') as $diseaseName) {
+        //     $disease = Disease::firstOrCreate(['name' => $diseaseName]);
+        //     $patient->diseases()->attach($disease->id);
+        // }
     }
 
     /**
