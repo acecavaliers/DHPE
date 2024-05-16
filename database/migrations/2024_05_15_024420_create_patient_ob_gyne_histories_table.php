@@ -18,8 +18,8 @@ return new class extends Migration
 
             $table->string('gyne_surgery')->nullable();
             $table->tinyInteger('is_pregnant')->default(0);
-            $table->string('gyne_surgery')->nullable();
-            $table->string('gyne_surgery')->nullable();
+            $table->string('g')->nullable();
+            $table->string('p')->nullable();
 
             $table->integer('age_of_gestation')->nullable();
             $table->date('expected_delivery')->nullable();
@@ -41,14 +41,6 @@ return new class extends Migration
             $table->tinyInteger('is_pain_viginal_sex')->default(0);
             $table->tinyInteger('is_vaginal_lesions_mass_warts')->default(0);
 
-            $table->tinyInteger('is_diabetes_mellitus')->default(0);
-            $table->tinyInteger('is_bronchial_asthma')->default(0);
-            $table->tinyInteger('is_bleeding_disorder')->default(0);
-            $table->tinyInteger('is_glaucoma')->default(0);
-            $table->tinyInteger('is_thyroid_disorder')->default(0);
-            $table->tinyInteger('is_mentyal_illness')->default(0);
-            $table->tinyInteger('is_malignancy')->default(0);
-            $table->string('otherdetails')->nullable();
             $table->tinyInteger('is_active')->default(0);
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
